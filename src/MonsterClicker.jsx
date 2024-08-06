@@ -33,47 +33,43 @@ const enemies = [{
 
 
 export default function App() {
-    const [counter, setCounter] = useState(0)
-    const [health, setHealth] = useState(enemies[0].hpMax)
-    const [damage, setDamage] = useState(1)
+    const [gold, setGold] = useState(0)
+    const [monsterHealth, setMonsterHealth] = useState(enemies[0].hpMax)
+    const [playerDamage, setPlayerDamage] = useState(1)
 
     const upgradeOption = (upgrade) => () => {
-        setCounter(counter - upgrade.cost)
-        setDamage(upgrade.multiplier)
+        setGold(gold - upgrade.cost)
+        setPlayerDamage(upgrade.multiplier)
         if(upgrade.id === 'reset'){
             reset()
         }else upgrade.showUpgrade = false
     }
 
     const attack = () => {
-        setHealth(health - damage)
-    }
-
-    const countClick = () => {
-        setCounter(counter + 1)
+        setMonsterHealth(monsterHealth - playerDamage)
     }
 
     const reset = () => {
-        setCounter(0)
+        setGold(0)
         setMultiplier(1)
-        setHealth(enemies[0].hpMax)
+        setmonsterHealth(enemies[0].hpMax)
         upgrades.forEach(upgrade =>
             upgrade.showUpgrade = true
         )
     }
 
     //damage handler
-    if(health <= 0) {
-        setHealth(enemies[0].hpMax)
-        countClick()
+    if(monsterHealth <= 0) {
+        setMonsterHealth(enemies[0].hpMax)
+        setGold (gold + enemies[0].gp)
     }
 
     return(
         <>
-        <h3>{counter}</h3>
+        <h3>Gold: {gold}</h3>
         <progress 
         max={enemies[0].hpMax} 
-        value={health} 
+        value={monsterHealth} 
         />
         <img src = {enemies[0].pic}
         width={'200xp'}
@@ -81,7 +77,7 @@ export default function App() {
         onClick={attack}/>
 
         {upgrades.map((upgrade) => (
-            counter >= upgrade.cost && upgrade.showUpgrade && <button
+            gold >= upgrade.cost && upgrade.showUpgrade && <button
             type = 'button'
             key = {upgrade.name}
             onClick = {upgradeOption(upgrade)}
