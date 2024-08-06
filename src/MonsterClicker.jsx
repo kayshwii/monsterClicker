@@ -5,13 +5,13 @@ import goblinHurt from './assets/goblin_hurt.png'
 const upgrades = [{
     id: 'x10',
     name: 'x 10',
-    cost: 10,
+    cost: 5,
     multiplier: 10,
     showUpgrade: true
 },{
     id: 'x100',
     name: 'x 100',
-    cost: 100,
+    cost: 30,
     multiplier: 100,
     showUpgrade: true
 },{
@@ -24,46 +24,46 @@ const upgrades = [{
 const enemies = [{
     id: 0,
     name: 'Goblino',
-    hpMax: 100,
-    hpCurrent: 100,
+    hpMax: 25,
+    hpCurrent: 25,
     gp: 1,
     pic: goblin,
     hit: goblinHurt
 }]
 
+
 export default function App() {
     const [counter, setCounter] = useState(0)
-    const [multiplier, setMultiplier] = useState(1)
     const [health, setHealth] = useState(enemies[0].hpMax)
+    const [damage, setDamage] = useState(1)
 
     const upgradeOption = (upgrade) => () => {
         setCounter(counter - upgrade.cost)
-        setMultiplier(upgrade.multiplier)
+        setDamage(upgrade.multiplier)
         if(upgrade.id === 'reset'){
-            upgrade.showUpgrade = true
             reset()
         }else upgrade.showUpgrade = false
     }
 
     const attack = () => {
-        setHealth(health - 1)
-        if(health <= 0) {
+        setHealth(health - damage)
+        if(health <= 1) {
             setHealth(enemies[0].hpMax)
             countClick()
         }
     }
 
     const countClick = () => {
-        setCounter(counter + multiplier)
+        setCounter(counter + 1)
     }
 
     const reset = () => {
         setCounter(0)
         setMultiplier(1)
+        setHealth(enemies[0].hpMax)
         upgrades.forEach(upgrade =>
             upgrade.showUpgrade = true
         )
-
     }
 
     return(
