@@ -47,10 +47,6 @@ export default function App() {
 
     const attack = () => {
         setHealth(health - damage)
-        if(health <= 1) {
-            setHealth(enemies[0].hpMax)
-            countClick()
-        }
     }
 
     const countClick = () => {
@@ -64,6 +60,12 @@ export default function App() {
         upgrades.forEach(upgrade =>
             upgrade.showUpgrade = true
         )
+    }
+
+    //damage handler
+    if(health <= 0) {
+        setHealth(enemies[0].hpMax)
+        countClick()
     }
 
     return(
