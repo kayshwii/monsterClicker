@@ -57,7 +57,7 @@ const HpBar = ({hpMax = 100, hp = 100}) => {
                     position: 'relative',
                     boxSizing: 'border-box',
                     borderRadius: '5px',
-                    transition: 'width 0.6s cubic-bezier(0.47, 1.64, 0.41, 0.8)'
+                    transition: 'width 0.6s cubic-bezier(0.5, 1.5, 0.5, 0.8)'
 
                 }}>
                 </div>
@@ -77,7 +77,7 @@ const HpBar = ({hpMax = 100, hp = 100}) => {
 
 export default function App() {
     const hpMax = 25
-    const [gold, setGold] = useState(50)
+    const [gold, setGold] = useState(0)
     const [hp, setHp] = useState(hpMax)
     const [playerDamage, setPlayerDamage] = useState(1)
 
@@ -88,7 +88,6 @@ export default function App() {
     }
 
     const attack = () => {
-        console.log(hpMax)
         setHp(hp - playerDamage)
     }
 
