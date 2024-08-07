@@ -3,15 +3,15 @@ import goblin from './assets/goblin.png'
 import goblinHurt from './assets/goblin_hurt.png'
 
 const upgrades = [{
-    id: 'x10',
+    id: 'dagger',
     name: 'Buy Dagger',
     cost: 5,
     multiplier: 10,
     showUpgrade: true
 },{
-    id: 'x100',
+    id: 'sword',
     name: 'Buy Sword',
-    cost: 30,
+    cost: 25,
     multiplier: 20,
     showUpgrade: true
 }]
@@ -29,44 +29,14 @@ const HpBar = ({hpMax = 100, hp = 100}) => {
     const currentHealth = (hp / hpMax) * 100
     return(
         <>
-        <div className = 'barBackground'
-            style={{width: '200px',
-                height: '25px',
-                backgroundColor: 'gray',
-                position: 'relative',
-                boxSizing: 'border-box',
-                margin: 'auto',
-                borderRadius: '10px',
-                padding: '5px',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center'
-        }}>
-            <div className="maxHealth"
-            style={{width: '100%',
-                height: '15px',
-                backgroundColor: 'red',
-                position: 'relative',
-                boxSizing: 'border-box',
-                borderRadius: '5px',
-            }}>
-                <div className="currentHealth"
-                style={{width: `${currentHealth}%`,
-                    height: '15px',
-                    backgroundColor: 'green',
-                    position: 'relative',
-                    boxSizing: 'border-box',
-                    borderRadius: '5px',
-                    transition: 'width 0.6s cubic-bezier(0.5, 1.5, 0.5, 0.8)'
-
-                }}>
+        <div className = 'barBackground'>
+            <div className='maxHealth'>
+                <div className='currentHealth'
+                style={{width: `${currentHealth}%`}}>
                 </div>
             </div>
-            <div
-            style={{
-                position: 'absolute',
-                }}>
-            {hp} / {hpMax}
+            <div style={{position: 'absolute'}}>
+                {hp} / {hpMax}
             </div>
         </div>
         
@@ -74,9 +44,27 @@ const HpBar = ({hpMax = 100, hp = 100}) => {
     )
 }
 
+const UpgradeButtons = ({upgrade, onClick}) => {
+    return (
+    <>
+        {upgrade.showUpgrade &&
+        <button 
+            type = 'button'
+            key = {upgrade.name}
+            onClick = {onClick}
+            style={{
+                display: 'block',
+                margin: 'auto'
+            }}
+            >
+            {upgrade.name}
+        </button>
+        }
+    </>)
+}
 
 export default function App() {
-    const hpMax = 25
+    const hpMax = enemies[0].health
     const [gold, setGold] = useState(0)
     const [hp, setHp] = useState(hpMax)
     const [playerDamage, setPlayerDamage] = useState(1)
@@ -117,18 +105,10 @@ export default function App() {
         onClick = {attack}/>
 
         {upgrades.map((upgrade) => (
-            gold >= upgrade.cost && upgrade.showUpgrade && <button
-            type = 'button'
-            key = {upgrade.name}
-            onClick = {upgradeOption(upgrade)}
-            style={{
-                display: 'block',
-                margin: 'auto'
-            }}
-            >
-            {upgrade.name}
-            </button>
-        ))}
+        gold >= upgrade.cost &&
+        <UpgradeButtons key={upgrade.id} upgrade={upgrade} onClick={upgradeOption(upgrade)} />
+      ))}
+        
         <button
         onClick={reset}
         style={{
