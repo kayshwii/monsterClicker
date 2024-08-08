@@ -4,13 +4,13 @@ import goblinHurt from './assets/goblin_hurt.png'
 
 const upgrades = [{
     id: 'dagger',
-    name: 'Buy Dagger',
+    name: 'Dagger: 5 gold',
     cost: 5,
     multiplier: 10,
     showUpgrade: true
 },{
     id: 'sword',
-    name: 'Buy Sword',
+    name: 'Sword: 25 gold',
     cost: 25,
     multiplier: 20,
     showUpgrade: true
@@ -44,11 +44,13 @@ const HpBar = ({hpMax = 100, hp = 100}) => {
     )
 }
 
-const UpgradeButtons = ({upgrade, onClick}) => {
+const UpgradeButtons = ({upgrade, onClick, gold}) => {
+    const disableButton = gold >= upgrade.cost
     return (
     <>
         {upgrade.showUpgrade &&
         <button 
+            disabled = {!disableButton}
             type = 'button'
             key = {upgrade.name}
             onClick = {onClick}
@@ -105,8 +107,7 @@ export default function App() {
         onClick = {attack}/>
 
         {upgrades.map((upgrade) => (
-        gold >= upgrade.cost &&
-        <UpgradeButtons key={upgrade.id} upgrade={upgrade} onClick={upgradeOption(upgrade)} />
+        <UpgradeButtons key={upgrade.id} upgrade={upgrade} onClick={upgradeOption(upgrade)} gold = {gold} />
       ))}
         
         <button
