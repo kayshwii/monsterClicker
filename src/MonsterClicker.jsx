@@ -52,10 +52,10 @@ export default function App() {
         onClick = {attack}/>
 
         {/*Display Shop*/}
-        <div id="shop" className="shop">
+        <div id="menu" className="menu">
             <div className="menuHeader">
                 <h3 className="title">The Shop</h3>
-                <p className="quote"><i>"Waddaya have?"</i></p>
+                <p className="quote"><i>"Waddaya need?"</i></p>
             </div>
             <div className="menuButtons">
             {upgrades.map((upgrade) => (

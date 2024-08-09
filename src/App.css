@@ -43,9 +43,9 @@
 
 /*healthbar styling*/
 .barBackground {
-  width: 200px;
+  width: 300px;
   height: 25px;
-  background-color: gray;
+  background-color: rgb(94, 92, 92);
   position: relative;
   box-sizing: border-box;
   margin: auto;
@@ -81,21 +81,24 @@
 }
 
 /*shop menu styling*/
-.shop {
+.menu {
   overflow: scroll;
   border-radius: 5px;
   background-color: #32323288;
   height: 200px;
   width: 500px;
   text-align: left;
-  margin-bottom: 1rem;
+  box-shadow: 3px 3px 3px rgba(47, 47, 47, 0.83);
 }
 
 .menuHeader {
   line-height: 0px;
-  padding: 0.5rem;
+  padding: 0.2rem;
+  padding-left: 15px;
   background-color: #6137375d;
   border-radius: 5px;
+  box-shadow: 1px 1px 1px rgba(67, 39, 39, 0.487);
+
 }
 
 .upgrades {
@@ -106,6 +109,7 @@
 .menuButtons {
   display: grid;
   grid-template-columns: auto auto;
+  padding-bottom: 10px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -115,8 +119,7 @@
     flex-direction: column;
   }
 
-  .shop {
+  .menu {
     display: block;
-    width: 300px;
   }
 }
