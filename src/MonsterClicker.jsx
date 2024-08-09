@@ -48,6 +48,7 @@ export default function App() {
         <img id="enemy"
         className="enemy"
         src = {enemies[0].pic}
+        width = {'200xp'}
         onClick = {attack}/>
 
         {/*Display Shop*/}
