@@ -41,6 +41,7 @@
   color: #888;
 }
 
+/*healthbar styling*/
 .barBackground {
   width: 200px;
   height: 25px;
@@ -72,4 +73,37 @@
   box-sizing: border-box;
   border-radius: 5px;
   transition: width 0.6s cubic-bezier(0.5, 1.5, 0.5, 0.8)
+}
+
+/*monster styling*/
+.enemy {
+  padding: 1rem;
+}
+
+/*shop menu styling*/
+.shop {
+  overflow: scroll;
+  border-radius: 5px;
+  background-color: #32323288;
+  height: 200px;
+  width: 500px;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.menuHeader {
+  line-height: 0px;
+  padding: 0.5rem;
+  background-color: #6137375d;
+  border-radius: 5px;
+}
+
+.upgrades {
+  margin: auto;
+  margin-top: 20px;
+}
+
+.menuButtons {
+  display: grid;
+  grid-template-columns: auto auto;
 }
