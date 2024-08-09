@@ -107,3 +107,16 @@
   display: grid;
   grid-template-columns: auto auto;
 }
+
+@media only screen and (max-width: 600px) {
+  /* For mobile phones: */
+  .menuButtons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .shop {
+    display: block;
+    width: 400px;
+  }
+}
