@@ -29,7 +29,7 @@ export default function App() {
     const [gold, setGold] = useState(0)
     const [hp, setHp] = useState(hpMax)
     const [playerDamage, setPlayerDamage] = useState(1)
-    const [menu, setMenu] = useState(menus[0].id)
+    const [menu, setMenu] = useState('home')
     
     const upgradeOption = (upgrade) => () => {
         setGold(gold - upgrade.cost)
@@ -49,7 +49,7 @@ export default function App() {
         setGold(0)
         setHp(hpMax)
         setPlayerDamage(1)
-        setMenu(menus[0].id)
+        setMenu('home')
         upgrades.forEach(upgrade =>
             upgrade.showUpgrade = true
         )
@@ -106,7 +106,7 @@ export default function App() {
                     </div>
                 <div className="menuHeaderReturn">
                     <button className="returnButton"
-                        onClick={menuHandle(menus[0])}>
+                        onClick={() => setMenu('home')}>
                         Home
                     </button>
                 </div>
@@ -130,7 +130,26 @@ export default function App() {
                     </div>
                 <div className="menuHeaderReturn">
                     <button className="returnButton"
-                        onClick={menuHandle(menus[0])}>
+                        onClick={() => setMenu('home')}>
+                        Home
+                    </button>
+                </div>
+                    
+                </div>
+            </div>
+        }
+
+        {/*Display Explore*/}
+        {menu === 'explore' &&
+            <div id="menu" className="menu">
+                <div className="menuHeader">
+                    <div className="menuHeaderText">
+                        <h3 className="title">More Monsters</h3>
+                        <p className="quote"><i>Coming soon!</i></p>
+                    </div>
+                <div className="menuHeaderReturn">
+                    <button className="returnButton"
+                        onClick={() => setMenu('home')}>
                         Home
                     </button>
                 </div>
