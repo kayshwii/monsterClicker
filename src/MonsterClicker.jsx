@@ -1,19 +1,44 @@
 import { useState } from "react";
-import HpBar from './HpBar.jsx'
 import { enemies } from "./enemies.js";
 import { upgrades } from "./upgrades.js";
+import { menus } from "./menus.js";
+import HpBar from './HpBar.jsx'
 import UpgradeButtons from "./UpgradeButtons.jsx";
+import MenuButtons from "./MenuButtons.jsx";
+
+const MenuWindow = ({menu}) => {
+    return(
+        <>
+        <div id="menu" className="menu">
+            <div className="menuHeader">
+                <h3 className="title">{menu.title}</h3>
+                <p className="quote"><i>{menu.quote}</i></p>
+            </div>
+            <div className="menuButtons">
+            {menu.menuButtons}
+            </div>
+        </div>
+        </>
+    )
+}
 
 export default function App() {
+
     const hpMax = enemies[0].health
+
     const [gold, setGold] = useState(0)
     const [hp, setHp] = useState(hpMax)
     const [playerDamage, setPlayerDamage] = useState(1)
-
+    const [menu, setMenu] = useState(menus[0].id)
+    
     const upgradeOption = (upgrade) => () => {
         setGold(gold - upgrade.cost)
         setPlayerDamage(upgrade.multiplier)
         upgrade.showUpgrade = false
+    }
+
+    const menuHandle = (menuButton) => () => {
+        setMenu(menuButton.id)
     }
 
     const attack = () => {
@@ -24,16 +49,19 @@ export default function App() {
         setGold(0)
         setHp(hpMax)
         setPlayerDamage(1)
+        setMenu(menus[0].id)
         upgrades.forEach(upgrade =>
             upgrade.showUpgrade = true
         )
     }
 
-    //damage handler
-    if(hp <= 0) {
-        setGold (gold + enemies[0].gp)
-        setHp(hpMax)
-    }
+    //monster death handler
+    hp <= 0 && (
+        setGold(gold + enemies[0].gp),
+        setHp(hpMax))
+   
+    //menu reset handler
+    menu === 'reset' && reset()
 
     
     return(
@@ -51,29 +79,65 @@ export default function App() {
         width = {'200xp'}
         onClick = {attack}/>
 
+        {/*Display Menu*/}
+        {menu === 'home' &&
+            <div id="menu" className="menu">
+                <div className="menuHeader">
+                    <div className="menuHeaderText">
+                        <h3 className="title">Home</h3>
+                        <p className="quote"><i>Welcome to Monster Clicker</i></p>
+                    </div>
+                </div>
+                <div className="menuButtons">
+                    {menus.map((menuButton) => (
+                        <MenuButtons key={menuButton.id} menuButton={menuButton} onClick={menuHandle(menuButton)} />
+                    ))}
+                </div>
+            </div>
+        }
+
         {/*Display Shop*/}
-        <div id="menu" className="menu">
-            <div className="menuHeader">
-                <h3 className="title">The Shop</h3>
-                <p className="quote"><i>"Waddaya need?"</i></p>
+        {menu === 'shop' &&
+            <div id="menu" className="menu">
+                <div className="menuHeader">
+                    <div className="menuHeaderText">
+                        <h3 className="title">The Shop</h3>
+                        <p className="quote"><i>"Waddaya need?"</i></p>
+                    </div>
+                <div className="menuHeaderReturn">
+                    <button className="returnButton"
+                        onClick={menuHandle(menus[0])}>
+                        Home
+                    </button>
+                </div>
+                    
+                </div>
+                <div className="menuButtons">
+                    {upgrades.map((upgrade) => (
+                        <UpgradeButtons key={upgrade.id} upgrade={upgrade} onClick={upgradeOption(upgrade)} gold = {gold} />
+                    ))}
+                </div>
             </div>
-            <div className="menuButtons">
-            {upgrades.map((upgrade) => (
-                <UpgradeButtons key={upgrade.id} upgrade={upgrade} onClick={upgradeOption(upgrade)} gold = {gold} />
-                ))}
+        }
+
+        {/*Display Player Info*/}
+        {menu === 'player' &&
+            <div id="menu" className="menu">
+                <div className="menuHeader">
+                    <div className="menuHeaderText">
+                        <h3 className="title">Player Info</h3>
+                        <p className="quote"><i>Coming soon!</i></p>
+                    </div>
+                <div className="menuHeaderReturn">
+                    <button className="returnButton"
+                        onClick={menuHandle(menus[0])}>
+                        Home
+                    </button>
+                </div>
+                    
+                </div>
             </div>
-        </div>
-        
-        
-        <button
-        onClick={reset}
-        style={{
-            display: 'block',
-            margin: 'auto'
-        }}
-      >
-        Reset
-      </button>
+        }
         </>
     )
 }

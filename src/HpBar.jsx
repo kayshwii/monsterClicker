@@ -1,4 +1,4 @@
-const HpBar = ({hpMax = 100, hp = 100}) => {
+const HpBar = ({hpMax, hp}) => {
     const currentHealth = (hp / hpMax) * 100
     return(
         <>

@@ -98,7 +98,16 @@
   background-color: #6137375d;
   border-radius: 5px;
   box-shadow: 1px 1px 1px rgba(67, 39, 39, 0.487);
+  display: flex;
+  justify-content: space-between;
+}
 
+.menuHeaderReturn {
+  margin: auto 10px;
+}
+
+.returnButton {
+  width: 100px;
 }
 
 .upgrades {

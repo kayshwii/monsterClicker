@@ -1,4 +1,3 @@
-import { Fragment } from "react"
 const UpgradeButtons = ({upgrade, onClick, gold}) => {
     const disableButton = gold >= upgrade.cost
     return (

@@ -13,3 +13,9 @@ All credit for images used go to https://www.flaticon.com/packs/fantastic-charac
         - A player info menu 
         - Areas to explore with different monsters.
         - Player health
+
+8/9/2024:
+    Added the shop! Did the best I could do to make it responsive. Looks pretty cool. The next hurdle I'm stuck at is adding a dynamic menu. I may be over thinking it but I'll try to make some updates tomorrow.
+
+8/10/2024:
+    Figured out a solution to the menu! The menu now renders dynamically based on selected option.
