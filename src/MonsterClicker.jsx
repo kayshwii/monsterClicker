@@ -6,6 +6,8 @@ import HpBar from './HpBar.jsx'
 import UpgradeButtons from "./UpgradeButtons.jsx";
 import MenuButtons from "./MenuButtons.jsx";
 
+
+//possible menu component
 const MenuWindow = ({menu}) => {
     return(
         <>

@@ -7,4 +7,10 @@ export const enemies = [{
     health: 25,
     gp: 1,
     pic: goblin,
+},{
+    id: 1,
+    name: '',
+    health: '',
+    gp: '',
+    pic: '',
 }]
