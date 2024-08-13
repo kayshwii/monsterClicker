@@ -1,3 +1,5 @@
+import HpBar from "./HpBar"
+
 const UpgradeButtons = ({upgrade, onClick, gold}) => {
     const disableButton = gold >= upgrade.cost
     return (

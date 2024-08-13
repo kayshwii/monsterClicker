@@ -19,3 +19,6 @@ All credit for images used go to https://www.flaticon.com/packs/fantastic-charac
 
 8/10/2024:
     Figured out a solution to the menu! The menu now renders dynamically based on selected option.
+
+8/12/2024:
+    Started work on the Explore menu. This is where users will find new monsters! Updated states and functions to handle new monsters health, image, and gp rewards.
