@@ -1,5 +1,0 @@
-const MenuDisplay = (menu) => {
-    return{
-        
-    }
-}
