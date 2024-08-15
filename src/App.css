@@ -91,13 +91,22 @@
 }
 
 .menuHeader {
-  line-height: 0px;
+  height: fit-content;
   padding: 0.2rem;
   padding-left: 15px;
   background-color: #6137375d;
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
+}
+
+.title {
+  margin: 0;
+
+}
+
+.headerText {
+  margin: 0;
 }
 
 .menuHeaderReturn {

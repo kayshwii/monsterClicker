@@ -25,3 +25,6 @@ All credit for images used go to https://www.flaticon.com/packs/fantastic-charac
 
 8/14/2024:
     I've been struggling with creating dynamic menus. My issue is getting access to functions or states that are local to the main app and do not exist in the component. Today I had a breakthrough: I can pass those objects as arguments to my component!
+
+8/15/2024:
+    Big updates today. Added areas to explore with new monsters. Nothing is balanced yet and monsters are just kind of random as far as health and gold drops go. Next update: Saves!

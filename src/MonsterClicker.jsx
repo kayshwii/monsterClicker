@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { enemies } from "./enemies.js";
 import { upgrades } from "./upgrades.js";
-import { explorationAreas } from "./eplorationAreas.js";
+import { explorationAreas } from "./menus.js";
 import { menus } from "./menus.js";
+import { darkForest } from "./enemies.js";
+import { manor } from "./enemies.js";
 import HpBar from './HpBar.jsx'
 import UpgradeButtons from "./UpgradeButtons.jsx";
 import ExploreButtons from "./ExploreButtons.jsx";
 import MenuButtons from "./MenuButtons.jsx";
 import MenuDisplay from "./MenuDisplay.jsx";
+import AreaMenus from "./AreaMenus.jsx";
+import EncounterButtons from "./EncounterButtons.jsx";
 import Encounter from "./Enemy.jsx";
 
 
@@ -37,7 +41,7 @@ export default function App() {
         setMenu(menuButton.id)
     }
 
-    const handleEnemy = (enemy) => {
+    const handleEnemy = (enemy) => () => {
         setHp(enemy.health)
         setActiveEnemy(enemy)
     }
@@ -136,39 +140,27 @@ export default function App() {
         }
 
         {menu === 'forest' &&
-        <div id="menu" className="menu">
-            <div className="menuHeader">
-                <div className="menuHeaderText">
-                    <h3 className="title">Dark Forest</h3>
-                    <p className="headerText"><i>Coming Soon</i></p>
-                </div>
-            </div>
-            <div className="menuButtonBox">
-                <button 
-                onClick={()=>setMenu('home')}
-                className="menuButtons">
-                    Home
-                </button>
-            </div>
-        </div>
+            <AreaMenus
+            key={explorationAreas[0].id}
+            explorationArea={(explorationAreas[0])}
+            setMenu={setMenu}
+            handleEnemy={handleEnemy}
+            buttonsList={darkForest}
+            ButtonComponent={EncounterButtons}
+            >
+            </AreaMenus>
         }
 
         {menu === 'manor' &&
-            <div id="menu" className="menu">
-                <div className="menuHeader">
-                    <div className="menuHeaderText">
-                        <h3 className="title">Haunted Manor</h3>
-                        <p className="headerText"><i>Coming Soon</i></p>
-                    </div>
-                </div>
-                <div className="menuButtonBox">
-                    <button 
-                    onClick={()=>setMenu('home')}
-                    className="menuButtons">
-                        Home
-                    </button>
-                </div>
-            </div>
+            <AreaMenus
+            key={explorationAreas[1].id}
+            explorationArea={(explorationAreas[1])}
+            setMenu={setMenu}
+            handleEnemy={handleEnemy}
+            buttonsList={manor}
+            ButtonComponent={EncounterButtons}
+            >
+            </AreaMenus>
         }
         </>
     )

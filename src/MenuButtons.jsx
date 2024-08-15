@@ -3,7 +3,7 @@ const MenuButtons = ({menuButton, onClick}) => {
     <>
         <button className="menuButtons"
             type = 'button'
-            key = {menuButton.name}
+            key = {menuButton}
             onClick = {onClick}
             >
                 {menuButton.name}

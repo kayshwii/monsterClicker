@@ -8,9 +8,20 @@ export const menus =[{
     headerText: 'Coming Soon!'
 },{
     id: 'explore',
-    name: "Explore",
+    name: 'Explore',
     headerText: 'Coming Soon!',
 },{
     id: 'reset',
     name: 'Reset'
+}]
+
+
+export const explorationAreas = [{
+    id: 'forest',
+    name: 'Dark Forest',
+    headerText: 'In the depths of the dark forest, terrible creatures lie in wait...'
+},{
+    id: 'manor',
+    name: 'Haunted Manor',
+    headerText: 'Disembodied whipsers from distant chambers shake the boldest adventurer...'
 }]
