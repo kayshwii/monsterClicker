@@ -15,7 +15,7 @@ const MenuDisplay = ({menu, setMenu, upgradeOption, gold, buttonsList = [], Butt
                 </div>
                 <div className="menuButtonBox">
                     {buttonsList.map((button) => (
-                        <ButtonComponent key={button.id} upgrade={button} exploreButton={button} onClick={upgradeOption(button)} gold = {gold} />
+                        <ButtonComponent key={button.id} button={button} onClick={upgradeOption(button)} gold = {gold} />
                     ))}
                 </div>
             </div>

@@ -1,12 +1,12 @@
-const ExploreButtons = ({exploreButton, onClick}) => {
+const ExploreButtons = ({button, onClick}) => {
     return (
         <>
             <button className="menuButtons"
             type = 'button'
-            key = {exploreButton.name}
+            key = {button.name}
             onClick = {onClick}
             >
-                {exploreButton.name}
+                {button.name}
         </button>
         </>
     )

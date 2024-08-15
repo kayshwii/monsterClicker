@@ -1,17 +1,17 @@
-const UpgradeButtons = ({upgrade, onClick, gold}) => {
-    const disableButton = gold >= upgrade.cost
+const UpgradeButtons = ({button, onClick, gold}) => {
+    const disableButton = gold >= button.cost
     return (
     <>
-        {upgrade.showUpgrade &&
+        {button.showUpgrade &&
         <button className="menuButtons"
             disabled = {!disableButton}
             type = 'button'
-            key = {upgrade.name}
+            key = {button.name}
             onClick = {onClick}
             >
-            {upgrade.name}: <br></br>
-            {upgrade.cost} gold<br></br>
-            <i>{upgrade.description}</i>
+            {button.name}: <br></br>
+            {button.cost} gold<br></br>
+            <i>{button.description}</i>
         </button>
         }
     </>)
