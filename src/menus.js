@@ -1,7 +1,7 @@
 export const menus =[{
     id: 'shop',
     name: 'Shop',
-    headerText: "Waddaya need?"
+    headerText: '"Waddaya need?"'
 },{
     id: 'player',
     name: 'Player Info',

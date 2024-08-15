@@ -1,10 +1,10 @@
-const MenuDisplay = ({menu, setMenu, upgradeOption, handleArea, gold, buttonsList = [], ButtonComponent}) => {
+const MenuDisplay = ({explorationArea, setMenu, handleArea, gold, buttonsList = [], ButtonComponent}) => {
     return (
         <div id="menu" className="menu">
                 <div className="menuHeader">
                     <div className="menuHeaderText">
-                        <h3 className="title">{menu.name}</h3>
-                        <p className="headerText"><i>{menu.headerText}</i></p>
+                        <h3 className="title">{explorationArea.name}</h3>
+                        <p className="headerText"><i>"{explorationArea.headerText}</i></p>
                     </div>
                     <div className="menuHeaderReturn">
                         <button className="returnButton"
@@ -15,12 +15,7 @@ const MenuDisplay = ({menu, setMenu, upgradeOption, handleArea, gold, buttonsLis
                 </div>
                 <div className="menuButtonBox">
                     {buttonsList.map((button) => (
-                        <ButtonComponent 
-                        key={button.id} 
-                        button={button}  
-                        upgradeOption={upgradeOption(button)}
-                        handleArea={handleArea(button)}
-                        gold={gold} />
+                        <ButtonComponent key={button.id} handleArea={handleArea(button)} button={button} gold={gold} />
                     ))}
                 </div>
             </div>

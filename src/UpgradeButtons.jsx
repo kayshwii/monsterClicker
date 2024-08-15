@@ -1,4 +1,4 @@
-const UpgradeButtons = ({button, onClick, gold}) => {
+const UpgradeButtons = ({button, upgradeOption, gold}) => {
     const disableButton = gold >= button.cost
     return (
     <>
@@ -7,7 +7,7 @@ const UpgradeButtons = ({button, onClick, gold}) => {
             disabled = {!disableButton}
             type = 'button'
             key = {button.name}
-            onClick = {onClick}
+            onClick = {upgradeOption}
             >
             {button.name}: <br></br>
             {button.cost} gold<br></br>

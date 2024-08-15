@@ -29,6 +29,10 @@ export default function App() {
         upgrade.showUpgrade = false
     }
 
+    const handleArea = (area) => () => {
+        setMenu(area.id)
+    }
+
     const menuHandle = (menuButton) => () => {
         setMenu(menuButton.id)
     }
@@ -98,6 +102,7 @@ export default function App() {
             menu={menus[0]}
             setMenu={setMenu}
             upgradeOption={upgradeOption} 
+            handleArea={handleArea}
             gold={gold}
             buttonsList={upgrades}
             ButtonComponent={UpgradeButtons}>
@@ -110,7 +115,8 @@ export default function App() {
             key={menus[1].id} 
             menu={menus[1]}
             setMenu={setMenu}
-            upgradeOption={upgradeOption} 
+            upgradeOption={upgradeOption}
+            handleArea={handleArea}
             gold={gold}>
             </MenuDisplay>
         }
@@ -121,11 +127,48 @@ export default function App() {
             key={menus[2].id} 
             menu={menus[2]}
             setMenu={setMenu}
+            handleArea={handleArea}
             upgradeOption={upgradeOption} 
             gold={gold}
             buttonsList={explorationAreas}
             ButtonComponent={ExploreButtons}>
             </MenuDisplay>
+        }
+
+        {menu === 'forest' &&
+        <div id="menu" className="menu">
+            <div className="menuHeader">
+                <div className="menuHeaderText">
+                    <h3 className="title">Dark Forest</h3>
+                    <p className="headerText"><i>Coming Soon</i></p>
+                </div>
+            </div>
+            <div className="menuButtonBox">
+                <button 
+                onClick={()=>setMenu('home')}
+                className="menuButtons">
+                    Home
+                </button>
+            </div>
+        </div>
+        }
+
+        {menu === 'manor' &&
+            <div id="menu" className="menu">
+                <div className="menuHeader">
+                    <div className="menuHeaderText">
+                        <h3 className="title">Haunted Manor</h3>
+                        <p className="headerText"><i>Coming Soon</i></p>
+                    </div>
+                </div>
+                <div className="menuButtonBox">
+                    <button 
+                    onClick={()=>setMenu('home')}
+                    className="menuButtons">
+                        Home
+                    </button>
+                </div>
+            </div>
         }
         </>
     )
