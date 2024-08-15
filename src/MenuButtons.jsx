@@ -1,7 +1,7 @@
 const MenuButtons = ({menuButton, onClick}) => {
     return (
     <>
-        <button className="upgrades"
+        <button className="menuButtons"
             type = 'button'
             key = {menuButton.name}
             onClick = {onClick}

@@ -1,11 +1,9 @@
-import HpBar from "./HpBar"
-
 const UpgradeButtons = ({upgrade, onClick, gold}) => {
     const disableButton = gold >= upgrade.cost
     return (
     <>
         {upgrade.showUpgrade &&
-        <button className="upgrades"
+        <button className="menuButtons"
             disabled = {!disableButton}
             type = 'button'
             key = {upgrade.name}

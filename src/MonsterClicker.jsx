@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { enemies } from "./enemies.js";
 import { upgrades } from "./upgrades.js";
+import { explorationAreas } from "./eplorationAreas.js";
 import { menus } from "./menus.js";
 import HpBar from './HpBar.jsx'
 import UpgradeButtons from "./UpgradeButtons.jsx";
+import ExploreButtons from "./ExploreButtons.jsx";
 import MenuButtons from "./MenuButtons.jsx";
+import MenuDisplay from "./MenuDisplay.jsx";
 import Encounter from "./Enemy.jsx";
 
 
@@ -70,6 +73,7 @@ export default function App() {
         {/*Display Monster*/}
         <Encounter enemy={activeEnemy} onClick={attack}></Encounter>
 
+
         {/*Display Menu*/}
         {menu === 'home' &&
             <div id="menu" className="menu">
@@ -79,7 +83,7 @@ export default function App() {
                         <p className="headerText"><i>Welcome to Monster Clicker</i></p>
                     </div>
                 </div>
-                <div className="menuButtons">
+                <div className="menuButtonBox">
                     {menus.map((menuButton) => (
                         <MenuButtons key={menuButton.id} menuButton={menuButton} onClick={menuHandle(menuButton)} />
                     ))}
@@ -89,74 +93,39 @@ export default function App() {
 
         {/*Display Shop*/}
         {menu === 'shop' &&
-            <div id="menu" className="menu">
-                <div className="menuHeader">
-                    <div className="menuHeaderText">
-                        <h3 className="title">The Shop</h3>
-                        <p className="headerText"><i>"Waddaya need?"</i></p>
-                    </div>
-                    <div className="menuHeaderReturn">
-                        <button className="returnButton"
-                            onClick={() => setMenu('home')}>
-                            Home
-                        </button>
-                    </div>
-                </div>
-                <div className="menuButtons">
-                    {upgrades.map((upgrade) => (
-                        <UpgradeButtons key={upgrade.id} upgrade={upgrade} onClick={upgradeOption(upgrade)} gold = {gold} />
-                    ))}
-                </div>
-            </div>
+            <MenuDisplay 
+            key={menus[0].id} 
+            menu={menus[0]}
+            setMenu={setMenu}
+            upgradeOption={upgradeOption} 
+            gold={gold}
+            buttonsList={upgrades}
+            ButtonComponent={UpgradeButtons}>
+            </MenuDisplay>
         }
 
         {/*Display Player Info*/}
         {menu === 'player' &&
-            <div id="menu" className="menu">
-                <div className="menuHeader">
-                    <div className="menuHeaderText">
-                        <h3 className="title">Player Info</h3>
-                        <p className="headerText"><i>Coming soon!</i></p>
-                    </div>
-                    <div className="menuHeaderReturn">
-                        <button className="returnButton"
-                            onClick={() => setMenu('home')}>
-                            Home
-                        </button>
-                    </div>
-                </div>
-                <div className="menuButtons">
-
-                </div>
-            </div>
+            <MenuDisplay 
+            key={menus[1].id} 
+            menu={menus[1]}
+            setMenu={setMenu}
+            upgradeOption={upgradeOption} 
+            gold={gold}>
+            </MenuDisplay>
         }
 
         {/*Display Explore*/}
         {menu === 'explore' &&
-            <div id="menu" className="menu">
-                <div className="menuHeader">
-                    <div className="menuHeaderText">
-                        <h3 className="title">More Monsters</h3>
-                        <p className="headerText"><i>Coming soon!</i></p>
-                    </div>
-                    <div className="menuHeaderReturn">
-                        <button className="returnButton"
-                            onClick={() => setMenu('home')}>
-                            Home
-                        </button>
-                    </div>
-                </div>
-                <div className="menuButtons">
-                    <button className="upgrades"
-                        onClick={() => handleEnemy(enemies[0])}>
-                        Goblino
-                    </button>
-                    <button className="upgrades"
-                        onClick={() => handleEnemy(enemies[1])}>
-                        Pogre
-                    </button>
-                </div>
-            </div>
+            <MenuDisplay 
+            key={menus[2].id} 
+            menu={menus[2]}
+            setMenu={setMenu}
+            upgradeOption={upgradeOption} 
+            gold={gold}
+            buttonsList={explorationAreas}
+            ButtonComponent={ExploreButtons}>
+            </MenuDisplay>
         }
         </>
     )

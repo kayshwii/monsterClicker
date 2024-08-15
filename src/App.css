@@ -108,12 +108,12 @@
   width: 100px;
 }
 
-.upgrades {
+.menuButtons {
   margin: auto;
   margin-top: 20px;
 }
 
-.menuButtons {
+.menuButtonBox {
   display: grid;
   grid-template-columns: auto auto;
   padding-bottom: 10px;
@@ -121,7 +121,7 @@
 
 @media only screen and (max-width: 600px) {
   /* For mobile phones: */
-  .menuButtons {
+  .menuButtonBox {
     display: flex;
     flex-direction: column;
   }

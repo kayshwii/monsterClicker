@@ -22,3 +22,6 @@ All credit for images used go to https://www.flaticon.com/packs/fantastic-charac
 
 8/12/2024:
     Started work on the Explore menu. This is where users will find new monsters! Updated states and functions to handle new monsters health, image, and gp rewards.
+
+8/14/2024:
+    I've been struggling with creating dynamic menus. My issue is getting access to functions or states that are local to the main app and do not exist in the component. Today I had a breakthrough: I can pass those objects as arguments to my component!

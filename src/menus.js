@@ -10,14 +10,6 @@ export const menus =[{
     id: 'explore',
     name: "Explore",
     headerText: 'Coming Soon!',
-    sections: [
-        {
-            id: 0,
-            name: 'Forest'},
-        {
-            id: 1,
-            name: 'Manor'
-        }]
 },{
     id: 'reset',
     name: 'Reset'
