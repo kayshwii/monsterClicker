@@ -9,7 +9,7 @@ export const menus =[{
 },{
     id: 'explore',
     name: 'Explore',
-    headerText: 'Coming Soon!',
+    headerText: '"Not all who wander are lost."',
 },{
     id: 'reset',
     name: 'Reset'
