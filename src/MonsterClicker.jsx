@@ -143,18 +143,6 @@ export default function App() {
             </MenuDisplay>
         }
 
-        {/*Display Player Info*/}
-        {menu === 'player' &&
-            <MenuDisplay 
-            key={menus[1].id} 
-            menu={menus[1]}
-            setMenu={setMenu}
-            upgradeOption={upgradeOption}
-            handleArea={handleArea}
-            gold={gold}>
-            </MenuDisplay>
-        }
-
         {/*Display Explore*/}
         {menu === 'explore' &&
             <MenuDisplay 
@@ -166,6 +154,18 @@ export default function App() {
             gold={gold}
             buttonsList={explorationAreas}
             ButtonComponent={ExploreButtons}>
+            </MenuDisplay>
+        }
+
+        {/*Display Player Info*/}
+        {menu === 'player' &&
+            <MenuDisplay 
+            key={menus[1].id} 
+            menu={menus[1]}
+            setMenu={setMenu}
+            upgradeOption={upgradeOption}
+            handleArea={handleArea}
+            gold={gold}>
             </MenuDisplay>
         }
 

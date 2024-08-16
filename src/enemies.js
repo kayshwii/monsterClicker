@@ -53,13 +53,13 @@ export const darkForest = [{
     id: 1,
     name: 'Pogre',
     health: 60,
-    gp: 2,
+    gp: 3,
     pic: ogre,
 },{
     id: 2,
     name: 'Whyclop',
     health: 200,
-    gp: 4,
+    gp: 5,
     pic: cyclops,
 }]
 
@@ -73,12 +73,12 @@ export const manor = [{
     id: 2,
     name: 'Redead',
     health: 100,
-    gp: 2,
+    gp: 4,
     pic: zombie,
 },{
     id: 3,
     name: 'Tut',
     health: 500,
-    gp: 2,
+    gp: 6,
     pic: mummy,
 }]
