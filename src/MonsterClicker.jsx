@@ -25,7 +25,7 @@ const storedUpgradeState = () => JSON.parse(localStorage.getItem('upgradeState')
 export default function App() {
     
     const [activeEnemy, setActiveEnemy] = useState(storedEnemy)
-    const hpMax = activeEnemy.health
+    let hpMax = activeEnemy.health
     const [gold, setGold] = useState(storedGold)
     const [hp, setHp] = useState(hpMax)
     const [playerDamage, setPlayerDamage] = useState(storedPlayerDamage)
@@ -84,11 +84,12 @@ export default function App() {
 
     const reset = () => {
         setGold(0)
-        setHp(hpMax)
         setPlayerDamage(1)
         setMenu('home')
         setActiveEnemy(enemies[0])
         setUpgradeState(upgrades)
+        hpMax = enemies[0].health
+        setHp(hpMax)
     }
 
     //monster death handler
