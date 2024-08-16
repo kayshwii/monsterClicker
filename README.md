@@ -28,3 +28,5 @@ All credit for images used go to https://www.flaticon.com/packs/fantastic-charac
 
 8/15/2024:
     Big updates today. Added areas to explore with new monsters. Nothing is balanced yet and monsters are just kind of random as far as health and gold drops go. Next update: Saves!
+
+    Update @ 8:42pm: Local storage implemented. Dumped state into local storage to save user progress.

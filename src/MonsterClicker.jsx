@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { enemies } from "./enemies.js";
 import { upgrades } from "./upgrades.js";
 import { explorationAreas } from "./menus.js";
@@ -14,23 +14,55 @@ import AreaMenus from "./AreaMenus.jsx";
 import EncounterButtons from "./EncounterButtons.jsx";
 import Encounter from "./Enemy.jsx";
 
+const storedEnemy = () => JSON.parse(localStorage.getItem('activeEnemy')) || enemies[0]
+const storedGold = () => JSON.parse(localStorage.getItem('gold')) || 0
+const storedPlayerDamage = () => JSON.parse(localStorage.getItem('playerDamage')) || 1
+const storedUpgradeState = () => JSON.parse(localStorage.getItem('upgradeState')) || upgrades
+
+
+
 
 export default function App() {
     
-    const [activeEnemy, setActiveEnemy] = useState(enemies[0])
+    const [activeEnemy, setActiveEnemy] = useState(storedEnemy)
     const hpMax = activeEnemy.health
-    const [gold, setGold] = useState(0)
+    const [gold, setGold] = useState(storedGold)
     const [hp, setHp] = useState(hpMax)
-    const [playerDamage, setPlayerDamage] = useState(1)
+    const [playerDamage, setPlayerDamage] = useState(storedPlayerDamage)
     const [menu, setMenu] = useState('home')
+    //test upgrade state
+    const [upgradeState, setUpgradeState] = useState(storedUpgradeState)
 
+    useEffect(() => {
+        localStorage.setItem('activeEnemy', JSON.stringify(activeEnemy))
+    },[activeEnemy])
 
+    useEffect(() => {
+        localStorage.setItem('gold', JSON.stringify(gold))
+    },[gold])
+
+    useEffect(() => {
+        localStorage.setItem('playerDamage', JSON.stringify(playerDamage))
+    },[playerDamage])
+
+    useEffect(() => {
+        localStorage.setItem('upgradeState', JSON.stringify(upgradeState))
+    },[upgradeState])
     
     //click handlers
     const upgradeOption = (upgrade) => () => {
         setGold(gold - upgrade.cost)
         setPlayerDamage(upgrade.multiplier)
-        upgrade.showUpgrade = false
+        //upgrade.showUpgrade = false
+        const boughtUpgrades = upgrades.map(newUpgrade => {
+            if(newUpgrade === upgrade){
+                return{
+                    ...newUpgrade, 
+                    showUpgrade: upgrade.showUpgrade = false
+                }
+            } else {return newUpgrade}
+        })
+        setUpgradeState(boughtUpgrades)
     }
 
     const handleArea = (area) => () => {
@@ -56,9 +88,7 @@ export default function App() {
         setPlayerDamage(1)
         setMenu('home')
         setActiveEnemy(enemies[0])
-        upgrades.forEach(upgrade =>
-            upgrade.showUpgrade = true
-        )
+        setUpgradeState(upgrades)
     }
 
     //monster death handler
@@ -108,7 +138,7 @@ export default function App() {
             upgradeOption={upgradeOption} 
             handleArea={handleArea}
             gold={gold}
-            buttonsList={upgrades}
+            buttonsList={upgradeState}
             ButtonComponent={UpgradeButtons}>
             </MenuDisplay>
         }
