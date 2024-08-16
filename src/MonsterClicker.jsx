@@ -146,8 +146,8 @@ export default function App() {
         {/*Display Explore*/}
         {menu === 'explore' &&
             <MenuDisplay 
-            key={menus[2].id} 
-            menu={menus[2]}
+            key={menus[1].id} 
+            menu={menus[1]}
             setMenu={setMenu}
             handleArea={handleArea}
             upgradeOption={upgradeOption} 
@@ -160,8 +160,8 @@ export default function App() {
         {/*Display Player Info*/}
         {menu === 'player' &&
             <MenuDisplay 
-            key={menus[1].id} 
-            menu={menus[1]}
+            key={menus[2].id} 
+            menu={menus[2]}
             setMenu={setMenu}
             upgradeOption={upgradeOption}
             handleArea={handleArea}
